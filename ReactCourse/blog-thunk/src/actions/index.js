@@ -9,7 +9,7 @@ import jsonPlaceholder from '../apis/jsonPlaceholder';
 export const fetchPostsAndUsers = () => {
     return async(dispatch, getState) => {
         console.log('Start fetching posts')
-        await dispatch(fetchPosts()); // dispatch is necessary here, also await until /posts call is completed
+        await dispatch(fetchPosts()); // dispatch is necessary here (calling action inside action), also await until /posts call is completed
         console.log('Fetched posts')
 
 
@@ -39,7 +39,7 @@ export const fetchPosts = () => {
 export const fetchUser = (id) => {
     //dispatch -> for changing the data, getState -> for getting the state
     return async (dispatch, getState) => {
-        const response = await jsonPlaceholder.get(`/user/${id}`);
+        const response = await jsonPlaceholder.get(`/users/${id}`);
 
         dispatch({ type:'FETCH_USER', payload: response.data })
     } 

@@ -15,6 +15,7 @@ class GoogleAuth extends React.Component {
                 this.onAuthChange(this.auth.isSignedIn.get());
                 this.auth.isSignedIn.listen(this.onAuthChange); //for making realtime changes in the text if the user signs in/ signs out
                 // after the state is changed, the component re-renders.
+                // this looks for a boolean arg when called.
             });
         });
     }
@@ -50,19 +51,17 @@ class GoogleAuth extends React.Component {
         {
             return (
                 <button onClick={this.onSignOutClick} className="ui red google button">
-                    <i className="google icon">
+                    <i className="google icon"/>
                         Sign out!
-                    </i>
                 </button>
-            )
+            );
         }
         else 
         {
             return (
                 <button onClick={this.onSignInClick} className="ui red google button">
-                    <i className="google icon">
+                    <i className="google icon"/>
                         Sign in with Google
-                    </i>
                 </button>
             )
         }

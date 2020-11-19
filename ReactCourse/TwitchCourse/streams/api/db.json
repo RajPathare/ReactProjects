@@ -12,13 +12,12 @@
     },
     {
       "title": "MyFinalStream1",
-      "description": "I created this stream!",
-      "userId": "109607175645523140625",
+      "description": "Edit description!",
       "id": 3
     },
     {
-      "title": "programmatic navigation",
-      "description": "prog nav!",
+      "title": "This is my stream!",
+      "description": "mystream2",
       "userId": "109607175645523140625",
       "id": 4
     }

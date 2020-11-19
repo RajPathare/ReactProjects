@@ -50,9 +50,13 @@ export const fetchStream = (id) => {
 
 export const editStream = (id, formValues) => {
     return async (dispatch) => {
-        const response = await streams.put(`/streams/${id}`, formValues);
+        // PUT request -> replaces everything in the obj even if we haven't specified some key,val pairs
+        // PATCH request -> replaces only the specified key,val pairs
+        const response = await streams.patch(`/streams/${id}`, formValues);
 
         dispatch({ type: EDIT_STREAM, payload: response.data });
+        // navigate the user back to the home page
+        history.push('/');
     }
 }
 

@@ -4,6 +4,23 @@
       "title": "mystream1",
       "description": "thisismystream",
       "id": 1
+    },
+    {
+      "title": "stream2",
+      "description": "mynewstream2",
+      "id": 2
+    },
+    {
+      "title": "MyFinalStream1",
+      "description": "I created this stream!",
+      "userId": "109607175645523140625",
+      "id": 3
+    },
+    {
+      "title": "programmatic navigation",
+      "description": "prog nav!",
+      "userId": "109607175645523140625",
+      "id": 4
     }
   ]
 }

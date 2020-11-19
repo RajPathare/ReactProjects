@@ -1,12 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchStreams } from '../../actions'
+import { Link } from 'react-router-dom'
 
 class StreamList extends React.Component {
 
     componentDidMount()
     {
         this.props.fetchStreams();
+    }
+
+    // render edit/delete buttons logic
+    renderAdmin(stream){
+        if(stream.userId === this.props.currentUserId)
+        {
+            return (
+                <div className="right floated content">
+                    <button className="ui button primary">EDIT</button>
+                    <button className="ui button red">DELETE</button>
+                </div>
+            )
+        }
     }
     
     renderList(){
@@ -19,9 +33,21 @@ class StreamList extends React.Component {
                         {stream.title}
                         <div className="description">{stream.description}</div>
                     </div>
+                    {this.renderAdmin(stream)} 
                 </div>
             )
         })
+    }
+
+    renderCreate(){
+        if(this.props.isSignedIn)
+        {
+            return (
+                <div style={{ textAlign: "right"}}>
+                    <Link to="/streams/new" className="ui button primary">Create Stream</Link>
+                </div>
+            )
+        }
     }
 
     render(){
@@ -30,13 +56,16 @@ class StreamList extends React.Component {
             <div>
                 <h2>Streams</h2>
                 <div className="ui celled list">{this.renderList()}</div>
+                {this.renderCreate()}
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    return { streams: Object.values(state.streams) }; // object.values takes a object and converts it into an array. We convert our obj into array for making it easier for us to map all stream so that we can use .map() function.
+    return { streams: Object.values(state.streams),
+    currentUserId: state.auth.userId,
+    isSignedIn: state.auth.isSignedIn }; // object.values takes a object and converts it into an array. We convert our obj into array for making it easier for us to map all stream so that we can use .map() function.
 }
 
 export default connect(mapStateToProps, { fetchStreams })(StreamList);

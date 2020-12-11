@@ -3,7 +3,15 @@ import { connect } from 'react-redux';
 import { fetchStreams } from '../../actions'
 import { Link } from 'react-router-dom'
 
+// import Modal2 from '../Modal2';
+
 class StreamList extends React.Component {
+
+    // state = {
+    //     loading: false,
+    //     visible: false,
+    //     streamName: ""
+    // };
 
     componentDidMount()
     {
@@ -22,6 +30,25 @@ class StreamList extends React.Component {
             )
         }
     }
+
+
+    // showModal = (streamInfo) => {
+    //     this.setState({
+    //       visible: true,
+    //       streamName: streamInfo.title
+    //     });
+    // };
+
+    // handleOk = () => {
+    //     this.setState({ loading: true });
+    //     setTimeout(() => {
+    //       this.setState({ loading: false, visible: false });
+    //     }, 3000);
+    //   };
+    
+    //   handleCancel = () => {
+    //     this.setState({ visible: false });
+    //   };
     
     renderList(){
         console.log(this.props.streams);
@@ -33,6 +60,7 @@ class StreamList extends React.Component {
                         <Link to={`/streams/${stream.id}`} className="header">
                             {stream.title}
                         </Link>
+                        {/* <button className="ui button primary" onClick={()=> this.showModal(stream)}>Here</button> */}
                         <div className="description">{stream.description}</div>
                     </div>
                     {this.renderAdmin(stream)} 
@@ -53,12 +81,22 @@ class StreamList extends React.Component {
     }
 
     render(){
-        // console.log(this.props.streams);
+        console.log(this.props.streams);
+        // const { visible, loading } = this.state;
         return (
             <div>
                 <h2>Streams</h2>
                 <div className="ui celled list">{this.renderList()}</div>
                 {this.renderCreate()}
+                {/* <Modal2 
+                visible={visible}
+                title={this.state.streamName}
+                onOk={this.handleOk}
+                onCancel={this.handleCancel}
+                handleOk={this.handleOk}
+                handleCancel={this.handleCancel}
+                loading={loading}
+                /> */}
             </div>
         )
     }

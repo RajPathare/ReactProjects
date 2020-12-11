@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 // Modal => popup screen. We use portal here since creating a modal without a portal is quite difficult since the components are deeply nested. body -> root -> App -> DeleteStream -> Modal -> Button
 // portal can be used for making some component a direct child of the body element.
 const Modal = (props) => {
+    console.log('invoked modal')
     return ReactDOM.createPortal(
         // if the user clicks outside the modal, we are navigating them back to the landing page.
         <div onClick={props.onDismiss} className="ui dimmer modals visible active">

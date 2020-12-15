@@ -4,6 +4,7 @@ import UserForm from './UserForm';
 
 import LanguageContext from '../context/LanguageContext';
 import ColorContext from '../context/ColorContext';
+import LanguageSelector from './LanguageSelector';
 
 
 class App extends React.Component {
@@ -22,12 +23,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="ui container">
-                <div>
-                    Select a language!
-                    <i className="flag us" onClick={() => this.onLanguageChange('english')}></i>
-                    <i className="flag nl" onClick={() => this.onLanguageChange('dutch')}></i>
-                </div>
-
+                <LanguageSelector onLanguageChange={this.onLanguageChange} />
                 <LanguageContext.Provider value={this.state.lang}>
                     <ColorContext.Provider value="red">
                         <UserForm />
